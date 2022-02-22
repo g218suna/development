@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "developer",
+    "password": "@Developer000",
+    "database": "Mindmap",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "developer",
+    "password": "@Developer000",
+    "database": "Mindmap",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "developer",
+    "password": "@Developer000",
+    "database": "Mindmap",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}
