@@ -1,0 +1,70 @@
+<%- include('../partials/header.ejs'); %>
+
+    <div class="main">
+        <div class="container">
+            <div class="heading">
+                <h2>設定</h2>
+            </div>
+            <div class="table-body">
+                <% login_user.forEach((user)=> {%>
+                    <form action="/change/<%=user.id%>" method="post">
+                        <div class="user-data">
+                            <div class="data name-column">
+                                <span class="idea-list-label">名前　</span>
+                                <%= user.name %>
+                                    <br>
+                                    <label for="changeName">名前を変更</label>
+                                    <input class="change-data" type="text" name="name" id="changeName">
+                            </div>
+                            <div class="data email-column">
+                                <span class="idea-list-label">メールアドレス　</span>
+                                <%= user.email %>
+                                    <br>
+                                    <label for="changeEmail">メールアドレスを変更</label>
+                                    <input class="change-data" type="text" name="email" id="changeEmail">
+                                    <div class="alert alert-danger"></div>
+                            </div>
+                            <div class="data password-column">
+                                <label for="changePassword">パスワードを変更</label>
+                                <input class="change-data" type="password" name="password" id="changePassword">
+                                <div class="alert alert-danger"></div>
+
+                                <label for="changePasswordConfirm">パスワードを変更（確認）</label>
+                                <input class="change-data" type="password" name="passwordConfirmation" id="changePasswordConfirm">
+                                <div class="alert alert-danger"></div>
+                            </div>
+                            <div class="data change-column">
+                                <input class="change-data" type="submit" value="変更する">
+                            </div>
+                            <div class="data create-column">
+                                <span class="idea-list-label">登録日時　</span>
+                                <%= user.createdAt %>
+                            </div>
+                            <div class="data emailVeried-column">
+                                <span class="idea-list-label">認証日時　</span>
+                                <%= user.emailVeriedAt %>
+                            </div>
+                        </div>
+                    </form>
+                    <% }); %>
+            </div>
+        </div>
+    </div>
+    <div class="buttons">
+        <% login_user.forEach((user)=> {%>
+            <form action="/delete/<%=user.id%>" method="post" onsubmit="return deleteConfirm()">
+                <input class="delete" type="submit" value="ユーザー削除">
+            </form>
+            <% }); %>
+    </div>
+
+    <script type="text/javascript">
+        function deleteConfirm() {
+            var result = top.confirm("本当に削除しますか？");
+            if (result === false) {
+                return false;
+            }
+        }
+    </script>
+
+    <%- include('../partials/footer.ejs'); %>

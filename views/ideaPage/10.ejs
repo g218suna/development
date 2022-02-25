@@ -1,0 +1,119 @@
+<%- include('../partials/header.ejs'); %>
+
+    <div class="main" id="main">
+        <div class="container">
+            <div class="heading">
+                <h2>
+                    <% ideaPage_data.forEach((ideaPage_data)=> { %>
+                        <%= ideaPage_data.title %>
+                            <form action="/change_title/<%= ideaPage_data.rootId%>" method="post">
+                                <input class="change_title mindmap-btn" value="<%=ideaPage_data.title %>" type="text" name="changeTitle">
+                                <input class="change_title mindmap-btn" type="submit" value="タイトルを変更">
+                            </form>
+                            <% }); %>
+                </h2>
+            </div>
+
+            <div class="paper-mindmap" id="map">
+            </div>
+            <div class="mindmap-bottom">
+                <div class="explanation">
+                    <details>
+                        <summary>
+                            <h3>マインドマップの書き方</h3>
+                        </summary>
+                        <span class="">※Macからではキーボード操作が出来ないことがあるので、右クリックメニューを使用してください</span>
+                        <img class="about-image" src="/images/about.png">
+                    </details>
+                </div>
+                <div class="func-buttons">
+                    <button class="mindmap-btn" id='$btn'>保存</button>
+                    <button class="mindmap-btn" id='$btn_save'>画像出力</button>
+                </div>
+            </div>
+
+            <style>
+                #map {
+                    height: 600px;
+                    width: 100%;
+                }
+            </style>
+
+            <div class="heading">
+                <h2>ノート</h2>
+            </div>
+            <div class="paper">
+                <canvas class="paper-canvas" id="mindmap"></canvas>
+            </div>
+
+            <div class="ctrl2" id="ctrl">
+                <div class="pencil-width">
+                    <img src="/images/pencil.png">
+                    <!-- 「線の太さ」ボタン群 -->
+                    <span class="wds cur" wd="1"><span id="w1"></span></span>
+                    <span class="wds" wd="2"><span id="w2"></span></span>
+                    <span class="wds" wd="3"><span id="w3"></span></span>
+                    <span class="wds" wd="4"><span id="w4"></span></span>
+                    <span class="wds" wd="5"><span id="w5"></span></span>
+                    <span class="wds" wd="6"><span id="w6"></span></span>
+                    <span class="wds" wd="7"><span id="w7"></span></span>
+                    <span class="wds" wd="8"><span id="w8"></span></span>
+                    <span class="wds" wd="9"><span id="w9"></span></span>
+                    <span class="wds" wd="10"><span id="w10"></span></span>
+                    <span class="wds" wd="11"><span id="w11"></span></span>
+                    <span class="wds" wd="12"><span id="w12"></span></span>
+                    <span class="wds" wd="13"><span id="w13"></span></span>
+
+                    <!-- 「線の太さ」選択枠 -->
+                    <input class="mindmap-btn" type="number" id="width" min="1" max="13" value="1">
+                </div>
+                <div class="pencil-color">
+                    <img src="/images/palette.png">
+                    <!-- 「線の色」ボタン群 -->
+                    <span class="cls cur" cl="#000"><span id="c1"></span></span>
+                    <span class="cls" cl="#fff"><span id="c2"></span></span>
+                    <span class="cls" cl="#f00"><span id="c3"></span></span>
+                    <span class="cls" cl="#080"><span id="c4"></span></span>
+                    <span class="cls" cl="#00f"><span id="c5"></span></span>
+                    <span class="cls" cl="#800"><span id="c6"></span></span>
+                    <span class="cls" cl="#fd0"><span id="c7"></span></span>
+                    <span class="cls" cl="#fcc"><span id="c8"></span></span>
+                    <span class="cls" cl="#888"><span id="c9"></span></span>
+                    <span class="cls" id="c11" cl="#000"><span id="c10"></span></span>
+
+                    <!-- 「線の色」選択枠 -->
+                    <input type="color" id="color">
+                </div>
+                <div class="cls">
+                    <img src="/images/eraser.png">
+                </div>
+                <div class="function">
+                    <button class="mindmap-btn" type="button" id="clear">クリア</button>
+                    <% ideaPage_data.forEach((ideaPage_data)=> { %>
+                        <button class="mindmap-btn" id="save" download="<%= ideaPage_data.title %>.jpg">保存</button>
+                        <%}); %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="/mindelixir/dist/MindElixir.js"></script>
+    <!--<script type="text/javascript" src="/mindelixir/dist/MindElixir.js"></script>-->
+    <script type="text/javascript" src="/mindelixir/dist/painter.js"></script>
+
+    <script type="text/javascript">
+        function loadScript(src) {
+            const script = document.createElement("script");
+            script.type = 'text/javascript';
+            script.src = src;
+            script.async = false;
+            document.body.appendChild(script);
+        }
+
+        let str = window.location.href.split('/').pop().split('.').pop();
+        loadScript(`/mindelixir/data/${str}.js`);
+        loadScript(`/mindelixir/data/init.js`);
+    </script>
+
+    <script type="text/javascript" src="/paint/paint.js"></script>
+
+    <%- include('../partials/footer.ejs'); %>

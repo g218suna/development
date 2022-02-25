@@ -1,0 +1,30 @@
+<%- include('../partials/header.ejs'); %>
+
+    <div class="main">
+        <div class="container">
+            <div class="heading">
+                <h2>みんなのアイデアを見る</h2>
+            </div>
+
+            <div class="table-body">
+                <% idea_list.forEach((idea_list)=> {%>
+                    <div class="idea-list">
+                        <a href="#" class="data-idea nickName">
+                            <span class="idea-list-label">ニックネーム　</span>
+                            <%= idea_list.nickName %>
+                        </a>
+                        <a href="/release_idea/<%= idea_list.rootId %>" class="data-idea title">
+                            <span class="idea-list-label">タイトル　</span>
+                            <%= idea_list.title %>
+                        </a>
+                        <a href="/release_idea/<%= idea_list.rootId %>" class="data-idea rootName">
+                            <span class="idea-list-label">中心テーマ　</span>
+                            <%= idea_list.rootName %>
+                        </a>
+                    </div>
+                    <% }); %>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../partials/footer.ejs'); %>

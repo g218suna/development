@@ -1,0 +1,45 @@
+<%- include('../partials/header.ejs'); %>
+
+    <div class="main">
+        <div class="container">
+            <div class="heading">
+                <h2>アイデアを新規作成</h2>
+            </div>
+
+            <div class="table-body">
+                <% create_idea.forEach((create_idea)=> {%>
+                    <form action="/create/<%=create_idea.id%>" method="post">
+                        <input type="hidden" name="id" value="<%=create_idea.id%>">
+                        <input type="hidden" name="email" value="<%=create_idea.email%>">
+                        <div class="idea-list">
+                            <div class="data-idea nickName">
+                                <span class="idea-list-label">ニックネーム<br>（※公開されます）</span>
+                                <input class="create-idea-text" type="text" name="nickName">
+                            </div>
+                            <div class="data-idea title">
+                                <span class="idea-list-label">タイトル</span>
+                                <input class="create-idea-text" type="text" name="title">
+                            </div>
+                            <div class="data-idea rootName">
+                                <span class="idea-list-label">中心テーマ</span>
+                                <input class="create-idea-text" type="text" name="rootName">
+                            </div>
+                            <div class="data-idea sharing">
+                                <span class="idea-list-label">公開設定</span>
+                                <br>
+                                <input type="radio" name="sharingSetting" value="true">
+                                <span>公開</span>
+                                <input type="radio" name="sharingSetting" value="false">
+                                <span>非公開</span>
+                            </div>
+                        </div>
+                        <div class="create">
+                            <input class="data-idea create-idea-text" type="submit" value="作成する" id="file">
+                        </div>
+                    </form>
+                    <% }); %>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../partials/footer.ejs'); %>

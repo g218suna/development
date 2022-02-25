@@ -1,0 +1,1 @@
+let mindmapData = {"nodeData":{"id":"root","topic":"Mind Map","root":true,"children":[{"topic":"new node","id":"f2c204e7b617345c","direction":0},{"topic":"new node","id":"f2c2050de5e8a23a","direction":1},{"topic":"new node","id":"f2c265592ab3acf8","direction":0,"children":[{"topic":"new node","id":"f2c26593732c0c16"}]}]},"linkData":{}};

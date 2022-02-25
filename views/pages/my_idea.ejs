@@ -1,0 +1,90 @@
+<%- include('../partials/header.ejs'); %>
+
+    <div class="main">
+        <div class="container">
+            <div class="heading">
+                <h2>自分のアイデアを見る</h2>
+            </div>
+
+            <div class="table-body">
+                <% idea_list.forEach((idea_list)=> { %>
+                    <form action="/sharingSetting_change/<%= idea_list.rootId %>" method="post" id="settingBox">
+                        <div class="idea-list">
+                            <div class="data-idea nickName">
+                                <span class="idea-list-label">ニックネーム　</span>
+                                <%= idea_list.nickName %>
+                                    <br>
+                                    <details>
+                                        <summary class="">
+                                            <img src="images/arrow.png">
+                                        </summary>
+                                        <input class="data-idea3" type="text" name="nickName" value="<%=idea_list.nickName %>">
+                                        <input class="data-idea2" type="submit" value="変更する">
+                                    </details>
+                            </div>
+                            <div class="data-idea title">
+                                <span class="idea-list-label">タイトル　</span>
+                                <%= idea_list.title %>
+                                    <br>
+                                    <details>
+                                        <summary class="">
+                                            <img src="images/arrow.png">
+                                        </summary>
+                                        <input class="data-idea3" type="text" name="title" value="<%=idea_list.title %>">
+                                        <input class="data-idea2" type="submit" value="変更する">
+                                    </details>
+                            </div>
+                            <div class="data-idea rootName">
+                                <span class="idea-list-label">中心テーマ　</span>
+                                <%= idea_list.rootName %>
+                                    <br>
+                                    <details>
+                                        <summary class="">
+                                            <img src="images/arrow.png">
+                                        </summary>
+                                        <input class="data-idea3" type="text" name="rootName" value="<%=idea_list.rootName %>">
+                                        <input class="data-idea2" type="submit" value="変更する">
+                                    </details>
+                            </div>
+                            <div class="data-idea sharing">
+                                <span class="idea-list-label">現在の設定</span>
+                                <span>
+                                    <% let sharing; if(idea_list.sharingSetting==true){sharing="公開" }else
+                                        if(idea_list.sharingSetting==false){sharing="非公開" }; %>
+                                        <%= sharing %>
+                                </span>
+                                <br>
+                                <details>
+                                    <summary class="">
+                                        <img src="images/arrow.png">
+                                    </summary>
+                                    <input type="radio" name="sharingSetting" value="true">
+                                    <span class="idea-list-label">公開</span>
+                                    <input type="radio" name="sharingSetting" value="false">
+                                    <span class="idea-list-label">非公開</span>
+                                    <input class="data-idea2" type="submit" value="変更する">
+                                </details>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="edit-delete-btn">
+                        <a href="/idea_edit/<%= idea_list.rootId %>" class="idea-delete">編集する</a>
+                        <form action="idea_delete/<%= idea_list.rootId %>" method="post" onsubmit="return deleteConfirm()">
+                            <input type="submit" value="削除する" class="idea-delete">
+                        </form>
+                    </div>
+                    <% }); %>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            function deleteConfirm() {
+                var result = top.confirm("本当に削除しますか？");
+                if (result === false) {
+                    return false;
+                }
+            }
+        </script>
+    </div>
+
+    <%- include('../partials/footer.ejs'); %>

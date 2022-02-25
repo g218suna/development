@@ -35,7 +35,7 @@ module.exports = {
         type: Sequelize.BOOLEAN
       },
       pageURL: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.STRING
       },
       createdAt: {
