@@ -1,3 +1,4 @@
+//export const Init = (mindmapData) => {
 let options = {
     el: '#map',
     direction: MindElixir.SIDE,
@@ -22,7 +23,7 @@ let options = {
             onclick: () => {
                 alert('extend menu')
             },
-        }, ],
+        },],
     },
     allowUndo: false,
     before: {
@@ -35,7 +36,6 @@ let options = {
         },
     },
 };
-
 
 let mind = new MindElixir(options);
 
@@ -83,3 +83,4 @@ window.onload = () => {
 };
 
 mind.init();
+//};

@@ -7,7 +7,8 @@
                     <% ideaPage_data.forEach((ideaPage_data)=> { %>
                         <%= ideaPage_data.title %>
                             <form action="/change_title/<%= ideaPage_data.rootId%>" method="post">
-                                <input class="change_title mindmap-btn" value="<%=ideaPage_data.title %>" type="text" name="changeTitle">
+                                <input class="change_title mindmap-btn" value="<%=ideaPage_data.title %>" type="text"
+                                    name="changeTitle">
                                 <input class="change_title mindmap-btn" type="submit" value="タイトルを変更">
                             </form>
                             <% }); %>
@@ -96,9 +97,14 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="/mindelixir/dist/MindElixir.js"></script>
-    <!--<script type="text/javascript" src="/mindelixir/dist/MindElixir.js"></script>-->
-    <script type="text/javascript" src="/mindelixir/dist/painter.js"></script>
+    
+    <!-- 
+    <script type="module">
+        let str = window.location.href.split('/').pop().split('.').pop();
+        import { mindmapData } from '/mindelixir/data/';
+        import { Init } from '/mindelixir/data/init.js';
+        Init(mindmapData);
+    </script> -->
 
     <script type="text/javascript">
         function loadScript(src) {
@@ -110,10 +116,12 @@
         }
 
         let str = window.location.href.split('/').pop().split('.').pop();
-        loadScript(`/mindelixir/data/${str}.js`);
-        loadScript(`/mindelixir/data/init.js`);
+        loadScript('/javascripts/mindelixir/dist/MindElixir.js');
+        loadScript('/javascripts/mindelixir/dist/painter.js');
+        loadScript(`/javascripts/mindelixir/data/${str}.js`);
+        loadScript(`/javascripts/mindelixir/data/init.js`);
     </script>
-
-    <script type="text/javascript" src="/paint/paint.js"></script>
+    
+    <script type="text/javascript" src="/javascripts/paint/paint.js"></script>
 
     <%- include('../partials/footer.ejs'); %>

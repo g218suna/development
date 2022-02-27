@@ -5,6 +5,9 @@
 
 /*----------------------------------------------------*/
 
+
+/*responsive*/
+
 .menu {
     float: right;
     display: none;
@@ -45,7 +48,7 @@
 }
 
 .sp-nav {
-    z-index: 1;
+    z-index: 2;
     position: fixed;
     top: 96px;
     left: 0;
@@ -85,6 +88,9 @@
 
 
 /*----------------------------------------------------*/
+
+
+/*header*/
 
 header {
     text-align: center;
@@ -177,6 +183,9 @@ header h1 {
 
 /*----------------------------------------------------*/
 
+
+/*main*/
+
 a {
     text-decoration: none;
 }
@@ -228,6 +237,9 @@ a {
 
 
 /*----------------------------------------------------*/
+
+
+/*自分のアイデアを見る*/
 
 .idea-list {
     display: flex;
@@ -352,6 +364,9 @@ details[open] summary {
 
 /*----------------------------------------------------*/
 
+
+/*アイデアを新規作成*/
+
 .create-idea-text {
     border-style: none;
     border-radius: 10px;
@@ -367,6 +382,9 @@ details[open] summary {
 
 
 /*----------------------------------------------------*/
+
+
+/*設定*/
 
 .user-data {
     display: flex;
@@ -399,6 +417,9 @@ details[open] summary {
 
 /*----------------------------------------------------*/
 
+
+/*ユーザー削除*/
+
 .delete {
     border-style: none;
     border-radius: 10px;
@@ -415,6 +436,9 @@ details[open] summary {
 
 
 /*----------------------------------------------------*/
+
+
+/*アイデアページ*/
 
 .paper {
     border-style: none;
@@ -640,13 +664,28 @@ span {
 
 /*----------------------------------------------------*/
 
+
+/*footer*/
+
 footer {
     margin-top: 30px;
-    border-top: 2px solid #CCCCCC;
+    padding-bottom: 100px;
+    /*border-top: 2px solid #CCCCCC;*/
 }
 
 footer h3 {
+    position: relative;
+    z-index: 1;
     float: right;
+}
+
+footer canvas{
+    z-index: 0;
+}
+
+footer div {
+    position: relative;
+    z-index: 1;
 }
 
 .background-colors {

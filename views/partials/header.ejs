@@ -10,45 +10,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c">
     <link rel="shortcut icon" href="/images/icons8Mindmap.ico" type="image/vnd.microsoft.icon">
     <link rel="icon" href="/images/icons8Mindmap.ico">
-    <!-- jQueryの読み込み -->
-    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
-
-    <script type="text/javascript">
-        window.onload = () => {
-            spmenu.onclick = () => {
-                document.getElementById("spNav").style.display = "block";
-                document.getElementById("spmenu").style.display = "none";
-                document.getElementById("spmenuClose").style.display = "block";
-            };
-
-            spmenuClose.onclick = () => {
-                document.getElementById("spNav").style.display = "none";
-                document.getElementById("spmenu").style.display = "block";
-                document.getElementById("spmenuClose").style.display = "none";
-            };
-        };
-
-        const clock = () => {
-            var d = new Date();
-            const dayname = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
-            var year = d.getFullYear();
-            var month = d.getMonth() + 1;
-            var date = d.getDate();
-            var dayofweek = d.getDay();
-            var hour = d.getHours();
-            var minute = d.getMinutes();
-            var second = d.getSeconds();
-
-            month = month < 10 ? "0" + month : month;
-            date = date < 10 ? "0" + date : date;
-            hour = hour < 10 ? "0" + hour : hour;
-            minute = minute < 10 ? "0" + minute : minute;
-            second = second < 10 ? "0" + second : second;
-            document.getElementsByClassName("clock")[0].innerHTML = year + "/" + month + "/" + date + "/" + dayname[dayofweek] + ' ' + hour + ":" + minute + ":" + second;
-        };
-
-        setInterval(clock, 1000);
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/javascripts/raindrop.js"></script>
 </head>
 
 <body>
@@ -64,9 +28,7 @@
             </div>
             <div class="header-right">
                 <span class="clock"></span>
-                <script type="text/javascript">
-                    clock();
-                </script>
+
                 <a href="/logout" class="btn-header logout-header">ログアウト</a>
                 <a href="/everyone_idea" class="btn-header everyone-idea-header">みんなのアイデアを見る</a>
                 <a href="/my_idea" class="btn-header my-idea-header">自分のアイデアを見る</a>
@@ -75,11 +37,11 @@
             </div>
 
             <div class="menu">
-                <img class="menu-icon" id="spmenu" src="/images/menu.png">
-                <img class="menu-icon-close" id="spmenuClose" src="/images/cross.png">
+                <img class="menu-icon" id="spmenu" src="/images/menu.png" style="display: block;">
+                <img class="menu-icon-close" id="spmenuClose" src="/images/cross.png" style="display: none;">
             </div>
 
-            <nav class="sp-nav" id="spNav">
+            <nav class="sp-nav" id="spNav" style="display: none;">
                 <ul>
                     <li><a href="/logout" class="">ログアウト</a></li>
                     <li><a href="/everyone_idea" class="">みんなのアイデアを見る</a></li>
