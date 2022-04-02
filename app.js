@@ -462,7 +462,7 @@ app.get('/createPage', (req, res) => {
         }
       });
 
-      fs.copy('public/mindelixir/data/template.js', 'public/mindelixir/data/' + maxRootId + '.js', (err) => {
+      fs.copy('public/javascripts/mindelixir/data/template.js', 'public/javascripts/mindelixir/data/' + maxRootId + '.js', (err) => {
         if (err) {
           console.log(err.stack);
         } else {
